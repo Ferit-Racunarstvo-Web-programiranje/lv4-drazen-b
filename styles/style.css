@@ -23,6 +23,55 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    
+}
+
+#php-elements-cart {
+    margin: 10px auto;
+    width: 90%;
+    max-width: 1000px;
+    background-color: var(--items-color);
+    box-shadow: 0 4px 0px 0 rgba(0,0,0,0.1);
+    border-radius: 0px;
+    padding: 1em;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#php-elements {    
+    margin: 10px auto;
+    width: 90%;
+    /* height: 100%; */
+    max-width: 1000px;
+    background-color: var(--items-color);
+    box-shadow: 0 4px 0px 0 rgba(0,0,0,0.1);
+    border-radius: 0px;
+    padding: 1em;
+    display: flex;
+    gap: 20px;
+}
+
+#php-elements h1 {
+    margin: 20px 10px 10px 0px;
+}
+
+#php-elements img {
+    max-width: 450px;
+    max-height: 450px;
+    width: auto;
+    height: auto;
+}
+
+#php-elements .details {
+    flex-grow: 1;
+}
+
+.product-price {
+    text-align: start;
 }
 
 html {
@@ -39,6 +88,20 @@ button {
 }
 
 button:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 8px 0px 0 rgba(0,0,0,0.1);
+}
+
+input {
+    color: white;
+    background-color: var(--primary-color);
+    font: var(--font-family-base);
+    border: 2px solid var(--accent-color);
+    border-radius: 0px;
+    box-shadow: 0 4px 0px 0 rgba(0,0,0,0.1);
+}
+
+input:hover {
     background-color: var(--accent-color);
     box-shadow: 0 8px 0px 0 rgba(0,0,0,0.1);
 }
@@ -249,6 +312,7 @@ textarea:focus, input:focus{
 
 footer {
     margin: auto;
+    margin-top: auto;
     padding: 10px 0px;
     width: 100%;
     background-color: var(--header-color);

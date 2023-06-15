@@ -23,24 +23,14 @@ $cartArray = array(
 	'image'=>$image)
 );
 
-if(empty($_SESSION["shopping_cart"])) {
-    $_SESSION["shopping_cart"] = $cartArray;
-    $status = "<div class='box'>Product is added to your cart!</div>";
-}else{
-    $array_keys = array_keys($_SESSION["shopping_cart"]);
-    if(in_array($code,$array_keys)) {
-	$status = "<div class='box' style='color:red;'>
-	Product is already added to your cart!</div>";
-    } else {
-    $_SESSION["shopping_cart"] = array_merge(
-    $_SESSION["shopping_cart"],
-    $cartArray
-    );
-    $status = "<div class='box'>Product is added to your cart!</div>";
-	}
-
-	}
 }
+
+  $user_id = session_id();
+
+  $query = "SELECT SUM(quantity) as total_quantity FROM `cart` WHERE `user_id`='$user_id'";
+  $result = mysqli_query($con, $query);
+  $row = mysqli_fetch_assoc($result);
+  $totalQuantity = $row['total_quantity'] + 0;
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +44,14 @@ if(empty($_SESSION["shopping_cart"])) {
   <body>
     <header>
       <div class="header-holder">
-        <h1>Web Shop</h1>
+        <h1><a href="index.php">Web Shop</a></h1>
         <div class="cart-container">
-          <button class="cart-button">
-            Cart <span class="cart-badge">0</span>
-          </button>
-        </div>
+                <a href="cart.php">
+                    <button class="cart-button">
+                        Cart <span class="cart-badge"><?php echo $totalQuantity; ?></span>
+                    </button>
+                </a>
+            </div>
       </div>
     </header>
   
@@ -69,33 +61,22 @@ if(empty($_SESSION["shopping_cart"])) {
       while($product_row = mysqli_fetch_assoc($product_result)){
       ?>
 
-      <div class="item">
-          <form method="post" action="">
-          <input type="hidden" name="code" value="<?php echo $product_row["code"]; ?>" />
-          <div class="product-image"><img src="<?php echo $product_row["image"]; ?>" /></div>
-          <div class="product-name"><?php echo $product_row["name"]; ?></div>
-          <div class="product-price"><?php echo "$".$product_row["price"]; ?></div>
-          <button type="submit" class="buy-btn">Add to Cart</button>
-          </form>
-      </div>
+    <div class="item">
+        <form method="post" action="">
+            <input type="hidden" name="code" value="<?php echo $product_row["code"]; ?>" />
+            <div class="product-image"><img src="<?php echo $product_row["image"]; ?>" /></div>
+            <div class="product-name"><?php echo $product_row["name"]; ?></div>
+            <div class="product-price"><?php echo "$".$product_row["price"]; ?></div>
+            <a href="product.php?code=<?php echo $product_row["code"]; ?>">
+                <button type="button" class="buy-btn">Select</button>
+            </a>
+        </form>
+    </div>
 
       <?php
       }
 ?>
     </div>
-  
-
-    <div class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Cart</h2>
-        <ul class="cart-items"></ul>
-        <p>Total: <span class="cart-total">$0.00</span></p>
-        <button class="buy-btn">Buy</button>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
 
   <footer>
     <div class="footer-holder">
