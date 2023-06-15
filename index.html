@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Web Shop</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
+  
   <body>
-    <h1>Web Shop</h1>
-    <div class="cart-container">
-        <button class="cart-button">Cart <span class="cart-badge">0</span></button>
-    </div>
-
-    <div class="items-grid">
-    </div>
+    <header>
+      <div class="header-holder">
+        <h1>Web Shop</h1>
+        <div class="search-container">
+          <input type="text" id="search-bar" placeholder="Search items..." />
+        </div>
+        <div class="cart-container">
+          <button class="cart-button">
+            Cart <span class="cart-badge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  
+    <div class="items-grid"></div>
+  
 
     <div class="modal">
       <div class="modal-content">
@@ -25,4 +35,15 @@
     </div>
     <script src="script.js"></script>
   </body>
+
+  <footer>
+    <div class="footer-holder">
+      <p>Web LV3</p>
+      <div>
+        <p>Made by: Drazen Bertic</p>
+        <a href="https://www.freepik.com/free-vector/collection-mixed-pixelated-fruits_2632371.htm#query=pixel%20fruit&position=30&from_view=keyword&track=ais">Images by rawpixel.com</a>
+      </div>
+    </div>
+  </footer>
+
 </html>
