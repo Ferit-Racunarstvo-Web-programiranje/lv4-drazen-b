@@ -1,6 +1,39 @@
 # LV 4 - PHP
 
+**Napravljena je osnovna imsplementacija. Postoji stranica s proizvodima, stranica proizvoda, cart i order page. Web server i baza podataka se pokreće preko Docker kontejnera, a upute su navedene dolje.**
+
+# Upute za pokretanje
+
+1. Potrebno je buildati Docker kontejner. U root direktoriju pokrenuti naredbu:
+
+```
+docker build -t php-my .
+```
+
+2. Pokrenuti docker-compose skriptu.
+
+```
+docker compose up
+```
+
+Potrebno je nešto vremena da se pokrene.
+
+Prvo se pokreće MySQL server i u njemu se inicijaliziraju useri, baze podataka i tablice, te se unose podatci u tablice. Nakon što se pokrene MySQL, kreće pokretanje PHP servera.
+
+Web stranici je moguće pristupiti `http://localhost`.
+
+# Zaustavljanje
+
+Kako bi zaustavili kontejnere i obrisali sve podatke koji su lokalno spremljeni potrebno je dodati `-v` zastavicu kojom brišemo stvorene volume.
+
+```
+docker compose down -v
+```
+
 U ovoj vježbi zadatak je nadodati dinamičke fukncionalnosti u web stranicu koristeći znanja JavaScripta, HTML-a iz prethodnih vježbi i povezati ih s PHP-om. U repozitoriju se nalaze datoteke `index.html` i `style.css` u kojima se nalazi osnovni kostur stranice za web trgovinu (iz prošle vježbe). U datoteci `script.js` nalazi se početna točka za JavaScript iz prethodne vježbe. Potrebno je koristiti sve do sada naučeno, kako biste ostvarili funkcionalnosti. Sve dokumente i foldere s lokalne strane postaviti na github u main branch. 
+
+
+---
 
 ## Kako raditi s PHP-om, MySQL-om, JavaScriptom, HTML-om i CSS-om koristeći XAMPP
 
