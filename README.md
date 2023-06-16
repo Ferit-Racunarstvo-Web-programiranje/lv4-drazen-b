@@ -35,6 +35,8 @@ U ovoj vježbi zadatak je nadodati dinamičke fukncionalnosti u web stranicu kor
 
 ---
 
+# Ostatak orginalnog README.md
+
 ## Kako raditi s PHP-om, MySQL-om, JavaScriptom, HTML-om i CSS-om koristeći XAMPP
 
 1. Preuzmite i instalirajte XAMPP sa službene web stranice.
