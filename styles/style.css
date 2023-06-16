@@ -93,17 +93,23 @@ button:hover {
 }
 
 input {
-    color: white;
-    background-color: var(--primary-color);
-    font: var(--font-family-base);
-    border: 2px solid var(--accent-color);
-    border-radius: 0px;
-    box-shadow: 0 4px 0px 0 rgba(0,0,0,0.1);
+        color: white;
+        margin: 5px;
+        padding: 5px;
+        background-color: var(--primary-color);
+        font: var(--font-family-base);
+        border: 2px solid var(--accent-color);
+        border-radius: 0px;
+        box-shadow: 0 4px 0px 0 rgba(0,0,0,0.1);
 }
 
 input:hover {
     background-color: var(--accent-color);
     box-shadow: 0 8px 0px 0 rgba(0,0,0,0.1);
+}
+
+.h2-order {
+    margin: 10px auto auto auto;
 }
 
 h1 {

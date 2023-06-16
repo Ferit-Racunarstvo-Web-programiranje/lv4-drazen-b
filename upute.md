@@ -18,4 +18,13 @@ Prvo se pokreće MySQL server i u njemu se inicijaliziraju useri, baze podataka 
 
 Web stranici je moguće pristupiti `http://localhost`.
 
+# Zaustavljanje
+
+Kako bi zaustavili kontejnere i obrisali sve podatke koji su lokalno spremljeni potrebno je dodati `-v` zastavicu kojom brišemo stvorene volume.
+
+```
+docker compose down -v
+```
+
+
 
