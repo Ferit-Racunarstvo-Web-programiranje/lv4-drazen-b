@@ -4,10 +4,14 @@
 
     $user_id = session_id();
 
-    $query = "SELECT SUM(quantity) as total_quantity FROM `cart` WHERE `user_id`='$user_id'";
-    $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($result);
-    $totalQuantity = $row['total_quantity'] + 0;
+    function getTotalQuantity($con, $user_id) {
+        $query = "SELECT SUM(quantity) as total_quantity FROM `cart` WHERE `user_id`='$user_id'";
+        $result = mysqli_query($con, $query);
+        $row = mysqli_fetch_assoc($result);
+        return $row['total_quantity'] + 0;
+    }
+
+    $totalQuantity = getTotalQuantity($con, $user_id);
 
     $query = "SELECT c.product_code, SUM(c.quantity) as quantity, p.name, p.price, p.image 
             FROM `cart` c 
@@ -20,16 +24,18 @@
         if(mysqli_num_rows($result) <= 0){
             echo "<script>alert('Cannot place order. Cart is empty!');</script>";
         }else{
-            
             $delete_query = "DELETE FROM `cart` WHERE `user_id`='$user_id'";
             if(mysqli_query($con, $delete_query)){
-                echo "<script>alert('Order is placed!');</script>";;
+                echo "<script>alert('Order is placed!');</script>";
+                
+                $totalQuantity = getTotalQuantity($con, $user_id);
             }else{
                 echo "<script>alert('Failed to place order!');</script>";
             }
         }
     }
 ?>
+
 
 <!DOCTYPE html>
 <html>

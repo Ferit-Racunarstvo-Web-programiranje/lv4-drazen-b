@@ -4,10 +4,14 @@
 
   $user_id = session_id();
 
-  $query = "SELECT SUM(quantity) as total_quantity FROM `cart` WHERE `user_id`='$user_id'";
-  $result = mysqli_query($con, $query);
-  $row = mysqli_fetch_assoc($result);
-  $totalQuantity = $row['total_quantity'] + 0;
+  function getTotalQuantity($con, $user_id) {
+    $query = "SELECT SUM(quantity) as total_quantity FROM `cart` WHERE `user_id`='$user_id'";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    return $row['total_quantity'] + 0;
+  }
+
+  $totalQuantity = getTotalQuantity($con, $user_id);
 
   if (isset($_GET['code']) && $_GET['code']!=""){
     $code = mysqli_real_escape_string($con, $_GET['code']);
@@ -40,15 +44,16 @@
           echo "Error: " . $insert . "<br>" . mysqli_error($con);
         }
       }
+
+      $totalQuantity = getTotalQuantity($con, $user_id);
     }
 
   } else {
     echo "Invalid product!";
     exit;
   }
-
-
 ?>
+
 
 
 
